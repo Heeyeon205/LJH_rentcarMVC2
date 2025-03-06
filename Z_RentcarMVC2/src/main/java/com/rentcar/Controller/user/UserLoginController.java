@@ -30,7 +30,7 @@ public class UserLoginController implements Controller{
 		System.out.println(id);
 		System.out.println(pw);
 		
-		String name = UserDAO.getInstance().checkLogin(id, pw);
+		String name = UserDAO.getInstance().checkUser(id, pw);
 		if(name != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("log", name);

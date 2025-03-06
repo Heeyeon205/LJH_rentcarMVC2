@@ -6,7 +6,7 @@
 <section class="login">
 	<form action="${ctx}/userUpdate.do" method="post">
 		<table>
-
+				<input type="hidden" id="num" name="num" value="${vo.num}" class="num-info">
 			<tr>
 				<td>Name</td>
 				<td><input type="text" id="name" name="name" value="${vo.name}"
@@ -48,6 +48,12 @@
 			</tr>
 		</table>
 	</form>
+	<div class="userDelete" >
+		<form action="userDelete.do" method="post">
+			<input type="hidden" id="userid" name="userid" value="${vo.userid}">
+			<button type="submit" class="btn-delete">회원탈퇴</button>
+		</form>
+	</div>
 </section>
 
 <%@ include file="/WEB-INF/parts/footer.jsp"%>

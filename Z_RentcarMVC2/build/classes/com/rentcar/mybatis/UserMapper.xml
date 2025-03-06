@@ -15,5 +15,24 @@
 		resultType="user">
 		select * from user where name = #{name};
 	</select>
+	
+	<update id="updateUser" parameterType="User">
+		update user 
+		set email=#{email}, phone=#{phone}
+		where num = #{num};
+	</update>
+	
+	<select id="isDupId" parameterType="String" resultType="int">
+		select count(*) from user where userid = #{userid};
+	</select>
+	
+	<insert id="insertUser" parameterType="User">
+		insert into user
+		values(#{num}, #{name}, #{userid}, #{pwd}, #{email}, #{phone});
+	</insert>
+	
+	<delete id="deleteUser" parameterType="map">
+		delete from user where userid=#{userid} and pwd=#{pwd};
+	</delete>
 
 </mapper>
