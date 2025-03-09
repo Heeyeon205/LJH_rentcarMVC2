@@ -21,21 +21,11 @@
 
 	<div class="board">
 		<table>
-			<tr>
-				<td>번호</td>
-				<td>작성자</td>
-				<td>작성일</td>
-				<td>제목</td>
-				<c:if test="${log eq '관리자'}">
-					<td>삭제</td>
-				</c:if>
-			</tr>
 			<c:forEach var="board" items="${boardList}">
 				<tr>
-					<td>${board.getNo()}</td>
-					<td>${board.getWriter()}</td>
-					<td>${board.getRegDate()}</td>
+					<td><i class="fa-solid fa-q"></i></td>
 					<td><a href="${ctx}/boardContent.do?no=${board.getNo()}">${board.getSubject()}</a></td>
+					<td>${board.getWriter()}</td>
 					<c:if test="${log eq '관리자'}">
 						<td colspan="2">
 							<form action="${ctx}/boardDelete.do" method="post">

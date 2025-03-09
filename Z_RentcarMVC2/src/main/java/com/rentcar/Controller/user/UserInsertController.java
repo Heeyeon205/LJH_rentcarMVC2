@@ -29,12 +29,6 @@ public class UserInsertController implements Controller{
 		String ctx = request.getContextPath();
 		PrintWriter out = response.getWriter();
 		
-		int check = UserDAO.getInstance().isDupId(userid);
-		if(check > 0) {
-			ScriptFunction.alertBack("이미 존재하는 ID 입니다." ,out, response);
-			return null;
-		}
-		
 		int num = 0;
 		String name = request.getParameter("name");
 		String pwd = request.getParameter("pwd");

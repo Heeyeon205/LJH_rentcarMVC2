@@ -6,9 +6,9 @@
 	version="6.0">
 	<display-name>Z_RentcarMVC2</display-name>
 
-<!-- 	<welcome-file-list>
+ 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
-	</welcome-file-list> -->
+	</welcome-file-list>
 
 	<filter>
 		<filter-name>SetCharEncoding</filter-name>
@@ -31,7 +31,7 @@
 
 	<context-param>
 		<param-name>UPLOAD_DIR</param-name>
-		<param-value>C:\upload</param-value>
+		<param-value>/User/heeyeon/uploads</param-value>
 	</context-param>
 	<!-- server.xml 에 값 추가하기 <Context docBase="c:\upload" path="/upload/" reloadable="true"/> -->
 

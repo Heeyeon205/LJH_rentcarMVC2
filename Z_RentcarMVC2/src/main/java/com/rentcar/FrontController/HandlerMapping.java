@@ -18,6 +18,7 @@ import com.rentcar.Controller.user.UserInsertController;
 import com.rentcar.Controller.user.UserLoginController;
 import com.rentcar.Controller.user.UserLogoutController;
 import com.rentcar.Controller.user.UserUpdateController;
+import com.rentcar.Controller.user.ValidIdAjaxController;
 
 public class HandlerMapping {
 	private HashMap<String, Controller> mappings;
@@ -30,6 +31,7 @@ public class HandlerMapping {
 		mappings.put("/userInfo.do", new UserInfoController());
 		mappings.put("/userUpdate.do", new UserUpdateController());
 		mappings.put("/userInsert.do", new UserInsertController());
+		mappings.put("/validIdAjax.do", new ValidIdAjaxController());
 		mappings.put("/userDelete.do", new UserDeleteController());
 		
 		// 렌터카 관리

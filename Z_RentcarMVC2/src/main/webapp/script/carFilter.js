@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 초기 리스트 로드
     fetch(window.ctx + "/rentcarFilter.do", {
         method: 'post',
         body: new FormData()
@@ -19,11 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .catch(error => console.error("초기 로드 오류", error));
 
-    // 체크박스 변경 시 필터 적용
     document.querySelector('.filterContainer').addEventListener('change', function(e) {
         const formData = new FormData(document.getElementById('filterForm'));
 
-        // "전체보기" 체크 여부에 따라 다른 체크박스 비활성화
         const companyWhole = document.getElementById('company_whole');
         const categoryWhole = document.getElementById('category_whole');
         const usepeopleWhole = document.getElementById('usepeople_whole');

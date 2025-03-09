@@ -4,7 +4,7 @@
 <%@ include file="/WEB-INF/parts/header.jsp"%>
 
 <section class="login">
-	<form action="${ctx}/userInsert.do" method="post">
+	<form id="userForm" action="${ctx}/userInsert.do" method="post">
 		<table>
 			<tr>
 				<td>Name</td>
@@ -14,14 +14,16 @@
 
 			<tr>
 				<td>ID</td>
-				<td><input type="text" id="userid" name="userid" value="${vo.userid}"
-					class="id-insert" required></td>
+				<td><input type="text" id="userid" name="userid"
+					value="${vo.userid}" class="id-insert" required>
+					<button type="button" id="checkId" class="btn-submit">아이디
+						중복 확인</button></td>
 			</tr>
 
 			<tr>
 				<td>PW</td>
-				<td><input type="password" id="pwd" name="pwd" class="pw-insert"
-					required></td>
+				<td><input type="password" id="pwd" name="pwd"
+					class="pw-insert" required></td>
 			</tr>
 
 			<tr>
@@ -41,12 +43,14 @@
 					<button type="submit" class="btn-submit">회원가입</button>
 				</td>
 				<td>
-					<button class="btn-cancel"
+					<button type="button" class="btn-cancel"
 						onclick="window.location.href='${ctx}/rentcarMain.jsp'">취소</button>
 				</td>
 			</tr>
 		</table>
 	</form>
+
+	<script src="${ctx}/script/insert.js"></script>
 </section>
 
 <%@ include file="/WEB-INF/parts/footer.jsp"%>

@@ -22,6 +22,10 @@ public class FrontController extends HttpServlet {
 		String url = request.getRequestURI();
 		String ctx = request.getContextPath();
 		String command = url.substring(ctx.length());
+		
+		 System.out.println("호출 URI: " + url);
+		    System.out.println("contextPath: " + ctx);
+		    System.out.println("command: " + command);
 
 		HandlerMapping mapping = new HandlerMapping();
 		Controller controller = mapping.getController(command);
