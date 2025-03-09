@@ -22,23 +22,25 @@ public class FrontController extends HttpServlet {
 		String url = request.getRequestURI();
 		String ctx = request.getContextPath();
 		String command = url.substring(ctx.length());
+
 		HandlerMapping mapping = new HandlerMapping();
 		Controller controller = mapping.getController(command);
-		System.out.println("url= " + url);
-		System.out.println("ctx= " + ctx);
-		System.out.println("command= " + command);
+
 		String nextPage = controller.requestHandler(request, response);
-		System.out.println("nextPage= " + nextPage);
-		
+		System.out.println("nextPage : " + nextPage);
+
 		if (nextPage != null) {
 			if (nextPage.indexOf("redirect:") != -1) {
+				System.out.println(nextPage.split(":")[1]);
 				response.sendRedirect(nextPage.split(":")[1]);
 			} else {
 				RequestDispatcher rd = null;
-				if(nextPage.contains("rentcar")) {
+				if (nextPage.contains("rentcar")) {
 					rd = request.getRequestDispatcher(ViewResolver.makeViewRentcar(nextPage));
-				}else {
+				} else if (nextPage.contains("user")) {
 					rd = request.getRequestDispatcher(ViewResolver.makeViewUser(nextPage));
+				} else if (nextPage.contains("board")) {
+					rd = request.getRequestDispatcher(ViewResolver.makeViewBoard(nextPage));
 				}
 				rd.forward(request, response);
 			}

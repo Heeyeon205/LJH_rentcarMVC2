@@ -16,7 +16,9 @@ public class UserInfoController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		System.out.println("유저 정보 컨트롤러");
+		
 		String name = request.getParameter("name");
 		User user = UserDAO.getInstance().getUserInfo(name);
 		

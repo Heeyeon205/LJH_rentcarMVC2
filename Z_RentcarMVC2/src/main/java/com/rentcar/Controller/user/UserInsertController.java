@@ -1,9 +1,11 @@
 package com.rentcar.Controller.user;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import com.rentcar.FrontController.Controller;
 import com.rentcar.dao.UserDAO;
+import com.rentcar.utils.ScriptFunction;
 import com.rentcar.vo.User;
 
 import jakarta.servlet.ServletException;
@@ -17,15 +19,20 @@ public class UserInsertController implements Controller{
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		System.out.println("유저 회원가입 컨트롤러");
+		
 		String userid = request.getParameter("userid");
 		if(userid == null) {
-			System.out.println("로그인 jsp로");
 			return "userInsert";
 		}
 		
+		String ctx = request.getContextPath();
+		PrintWriter out = response.getWriter();
+		
 		int check = UserDAO.getInstance().isDupId(userid);
 		if(check > 0) {
-			return "userInsert";
+			ScriptFunction.alertBack("이미 존재하는 ID 입니다." ,out, response);
+			return null;
 		}
 		
 		int num = 0;
@@ -37,7 +44,9 @@ public class UserInsertController implements Controller{
 		
 		int cnt = UserDAO.getInstance().insertUser(user);
 		if(cnt > 0) {
-			return "rentcarMain";
+			String url = ctx + "/rentcarMain.do";
+			ScriptFunction.alertLocation(name + "님 회원가입 완료.", url, out, response);
+			return null;
 		}
 		return null;
 	}

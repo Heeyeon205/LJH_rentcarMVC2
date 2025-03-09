@@ -1,9 +1,11 @@
 package com.rentcar.Controller.user;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import com.rentcar.FrontController.Controller;
 import com.rentcar.dao.UserDAO;
+import com.rentcar.utils.ScriptFunction;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,26 +18,27 @@ public class UserLoginController implements Controller{
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		System.out.println("로그인 컨트롤러");
 		String ctx = request.getContextPath();
+		PrintWriter out = response.getWriter();
 		
 		String id = request.getParameter("id");
 		if(id == null) {
-			System.out.println("id못받음");
-//			return "redirect:" + ctx + "/userLogin.jsp";
 			return "userLogin";
+//			return "redirect:" + ctx + "/WEB-INF/user/userLogin.jsp";
 		}
 		String pw = request.getParameter("pw");
-		
-		System.out.println("id받음");
-		System.out.println(id);
-		System.out.println(pw);
 		
 		String name = UserDAO.getInstance().checkUser(id, pw);
 		if(name != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("log", name);
-			return "rentcarMain";
+			String url = ctx + "/rentcarMain.do";
+			ScriptFunction.alertLocation(name + "님 환영합니다.", url, out, response);
+//			return "rentcarMain";
+			return null;
 		}
+		ScriptFunction.alertBack("ID 혹은 PW를 확인해주세요", out, response);
 		return null;
 	}
 

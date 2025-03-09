@@ -34,5 +34,9 @@
 	<delete id="deleteUser" parameterType="map">
 		delete from user where userid=#{userid} and pwd=#{pwd};
 	</delete>
+	
+	<select id="getUserId" parameterType="String" resultType="String">
+		select userid from user where name=#{name};
+	</select>
 
 </mapper>

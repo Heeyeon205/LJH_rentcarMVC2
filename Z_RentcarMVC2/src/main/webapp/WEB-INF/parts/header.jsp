@@ -11,33 +11,48 @@
 <head>
 <meta charset="UTF-8">
 <title>Header</title>
-<script src="${ctx}/script/alert.js"></script>
-<script>
-    console.log("✅ alert.js 로드됨!");
-</script>
-
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body>
 
 	<header>
-		<c:choose>
-			<c:when test="${log eq null}">
-				<form action="${ctx}/userInsert.do" method="post">
-					<button type="submit">회원가입</button>
-				</form>
-				<form action="${ctx}/userLogin.do" method="post">
-					<button type="submit">로그인</button>
-				</form>
-			</c:when>
-			<c:otherwise>
-				<span>${log} 님 환영합니다.</span>
-				<a href="${ctx}/userInfo.do?name=${log}">내 정보</a>
-				<form action="${ctx}/userLogout.do" method="post">
-					<button type="submit">로그아웃</button>
-				</form>
-			</c:otherwise>
-		</c:choose>
+
+		<section class="rentcar-logo">
+			<a href="${ctx}/rentcarMain.do"> 
+			<img src="${ctx}/image/rent_logo.jpg" alt="로고" style="width: 150px; height: auto;">
+			</a>
+
+		</section>
+
+		<section class="rentcar-header">
+			<a href="${ctx}/rentcarReservation.do">빠른 예약</a>
+			<a href="${ctx}/rentcarReservationList.do">내 예약 정보</a>
+			<a href="${ctx}/rentcarCustomerCenter.do">고객센터</a>
+		</section>
+
+		<section class="user-header">
+			<c:choose>
+				<c:when test="${log eq null}">
+					<a href="${ctx}/userInsert.do">회원가입</a>
+					<a href="${ctx}/userLogin.do">로그인</a>
+				</c:when>
+				<c:otherwise>
+					<span>${log}님 환영합니다.</span>
+					<a href="${ctx}/userInfo.do?name=${log}">
+						<i class="fa-regular fa-user"></i>
+					</a>
+					<a href="${ctx}/userLogout.do">로그아웃</a>
+				</c:otherwise>
+			</c:choose>
+		</section>
+
 	</header>
 
 	<main>
+	
+	<script>
+    window.ctx = "${pageContext.request.contextPath}";
+	</script>
+	

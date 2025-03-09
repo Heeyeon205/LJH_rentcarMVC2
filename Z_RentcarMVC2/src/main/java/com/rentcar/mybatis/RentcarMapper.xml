@@ -6,9 +6,33 @@
   
 <mapper namespace="com.rentcar.mybatis.RentcarMapper">
 
-	<select id="checkLogin" parameterType="String"
-		resultType="String">
-		select name from member where id=#{id} and pass=#{pass};
+	<select id="getRentcarList" resultType="rentcar">
+		select * from rentcar;
 	</select>
-
+	
+	<select id="getFilterCar" parameterType="map" resultType="rentcar">
+   		select * from rentcar
+    <where>
+        <if test="company != null and company.length > 0">
+            and company in
+            <foreach item="comp" collection="company" open="(" separator="," close=")">
+                #{comp}
+            </foreach>
+        </if>
+        <if test="category != null and category.length > 0">
+            and category in
+            <foreach item="cat" collection="category" open="(" separator="," close=")">
+                #{cat}
+            </foreach>
+        </if>
+        <if test="usepeople != null and usepeople.length > 0">
+            and usepeople in
+            <foreach item="use" collection="usepeople" open="(" separator="," close=")">
+                #{use}
+            </foreach>
+        </if>
+    </where>
+</select>
+	
+	
 </mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rentcar.mybatis.BoardMapper">
+
+	<select id="getAllBoardList" resultType="Board">
+		select * from board;
+	</select>
+
+	<select id="getTotalBoardCount" resultType="int">
+		select count(*) as count from board
+	</select>
+	
+	<select id="getBoardList" parameterType="map" resultType="Board">
+		select * from board order by no desc limit #{offset}, #{pageSize}
+	</select>
+	
+	<insert id="insertBoard" parameterType="Board">
+    	insert into board (writer, reg_date, subject, contents)
+    	values (#{writer}, NOW(), #{subject}, #{contents})
+	</insert>
+	
+	<delete id="deleteBoard" parameterType="int">
+		delete from board where no=#{no};
+	</delete>
+	
+	<select id="getBoardNoByUserId" parameterType="String" resultType="int">
+		select no from board where writer=#{userid};
+	</select>
+	
+	<select id="getBoardInfoByNo" parameterType="int" resultType="Board">
+		select * from board where no=#{boardNo};
+	</select>
+	
+	<update id="updateBoard" parameterType="Board">
+		update board set subject=#{subject}, contents=#{contents} where no=#{no};
+	</update>
+
+</mapper>

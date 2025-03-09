@@ -25,8 +25,8 @@ public class UserDAO {
 	}
 
 	private static SqlSessionFactory sqlSessionFactory;
-	private static SqlSession session;
-	
+	private static String nameSpace = "com.rentcar.mybatis.UserMapper.";
+
 	static {
 		try {
 			String resource = "com/rentcar/mybatis/config.xml";
@@ -39,45 +39,56 @@ public class UserDAO {
 
 	public String checkUser(String userid, String pwd) {
 		HashMap<String, String> params = new HashMap<>();
+		String name = "";
 		params.put("userid", userid);
 		params.put("pwd", pwd);
-		session = sqlSessionFactory.openSession();
-		String name = session.selectOne("checkLogin", params);
-		session.close();
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			name = session.selectOne(nameSpace + "checkLogin", params);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return name;
 	}
 
 	public User getUserInfo(String name) {
-		session = sqlSessionFactory.openSession();
-		User user = session.selectOne("getUserInfo", name);
-		session.close();
+		User user = null;
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			user = session.selectOne(nameSpace + "getUserInfo", name);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return user;
 	}
 
 	public int updateUser(User user) {
-		session = sqlSessionFactory.openSession();
 		int cnt = 0;
-		cnt = session.update("updateUser", user);
-		session.commit();
-		session.close();
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			cnt = session.update(nameSpace + "updateUser", user);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return cnt;
 	}
-	
+
 	public int isDupId(String userid) {
-		session = sqlSessionFactory.openSession();
 		int cnt = 0;
-		cnt = session.selectOne("isDupId", userid);
-		session.close();
-		System.out.println("cnt: " + cnt);
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			cnt = session.selectOne(nameSpace + "isDupId", userid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return cnt;
 	}
 
 	public int insertUser(User user) {
-		session = sqlSessionFactory.openSession();
 		int cnt = 0;
-		cnt = session.insert("insertUser", user);
-		session.commit();
-		session.close();
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			cnt = session.insert(nameSpace + "insertUser", user);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return cnt;
 	}
 
@@ -85,12 +96,23 @@ public class UserDAO {
 		HashMap<String, String> params = new HashMap<>();
 		params.put("userid", userid);
 		params.put("pwd", pwd);
-		session = sqlSessionFactory.openSession();
 		int cnt = 0;
-		cnt = session.delete("deleteUser", params);
-		System.out.println("deleteCnt: " + cnt);
-		session.commit();
-		session.close();
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			cnt = session.delete("deleteUser", params);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return cnt;
+	}
+
+	public String getUserId(String name) {
+		String userid = "";
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			userid = session.selectOne(nameSpace + "getUserId", name);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return userid;
 	}
 }

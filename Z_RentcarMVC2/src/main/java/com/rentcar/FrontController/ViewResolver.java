@@ -9,4 +9,8 @@ public class ViewResolver {
 	public static String makeViewRentcar(String nextPage) {
 		return "/WEB-INF/rentcar/" + nextPage + ".jsp";
 	}
+	
+	public static String makeViewBoard(String nextPage) {
+		return "/WEB-INF/board/" + nextPage + ".jsp";
+	}
 }

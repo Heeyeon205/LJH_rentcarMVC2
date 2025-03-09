@@ -13,7 +13,7 @@ public class RentcarMainController implements Controller{
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		System.out.println("메인 컨트롤러");
 		String ctx = request.getContextPath();
 //		return "redirect:" + ctx + "/main.jsp";
 		return "rentcarMain";

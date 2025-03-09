@@ -3,12 +3,21 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="com.rentcar.mybatis.ReservationMapper">
 
-	<select id="checkLogin" parameterType="String"
-		resultType="String">
-		select name from member where id=#{id} and pass=#{pass};
+	<insert id="insertReservation" parameterType="Reservation">
+		insert into reservation
+		values(#{reserve_seq}, #{num}, #{userid}, #{qty}, #{dday}, #{rday}, #{usein},
+		#{usewifi}, #{usenavi}, #{useseat});
+	</insert>
+	
+	<select id="getReservationList" resultType="Reservation">
+		select * from reservation;
+	</select>
+	
+	<select id="getReservationListByUserId" resultType="Reservation" parameterType="String">
+		select * from reservation where userid=#{userid};
 	</select>
 
 </mapper>
