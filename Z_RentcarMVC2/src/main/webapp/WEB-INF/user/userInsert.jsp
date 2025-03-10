@@ -3,9 +3,10 @@
 
 <%@ include file="/WEB-INF/parts/header.jsp"%>
 
-<section class="login">
+<section class="insert">
 	<form id="userForm" action="${ctx}/userInsert.do" method="post">
 		<table>
+			<h1>회원가입</h1>
 			<tr>
 				<td>Name</td>
 				<td><input type="text" id="name" name="name" value="${vo.name}"
@@ -40,11 +41,11 @@
 
 			<tr>
 				<td>
-					<button type="submit" class="btn-submit">회원가입</button>
-				</td>
-				<td>
 					<button type="button" class="btn-cancel"
 						onclick="window.location.href='${ctx}/rentcarMain.jsp'">취소</button>
+				</td>
+				<td>
+					<button type="submit" class="btn-submit">회원가입</button>
 				</td>
 			</tr>
 		</table>
@@ -54,4 +55,3 @@
 </section>
 
 <%@ include file="/WEB-INF/parts/footer.jsp"%>
-

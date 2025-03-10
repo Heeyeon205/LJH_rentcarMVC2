@@ -3,20 +3,15 @@
 
 <%@ include file="/WEB-INF/parts/header.jsp"%>
 
-
-<div class="reserve-img">
-	<a href="">이미지 넣을거임</a>
-</div>
-
 <div class="ReservationList-container">
 	<table class="reserveList">
-		<tr>
+	<h1>내 예약 정보</h1>
+		<tr class="listInfo">
 			<td>예약 번호</td>
 			<td>차량 번호</td>
 			<td>예약자 ID</td>
 			<td>예약 대수</td>
 			<td>랜트 기간</td>
-			<td>렌트 일</td>
 			<td>렌트 일</td>
 			<td>운전자 보험 가입 여부</td>
 			<td>와이파이 신청 여부</td>
@@ -38,7 +33,6 @@
 			</tr>
 		</c:forEach>
 	</table>
-
 </div>
 
 <%@ include file="/WEB-INF/parts/footer.jsp"%>

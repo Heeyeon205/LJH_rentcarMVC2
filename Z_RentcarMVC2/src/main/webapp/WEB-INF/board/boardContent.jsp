@@ -3,13 +3,12 @@
 
 <%@ include file="/WEB-INF/parts/header.jsp"%>
 
-
-<div class="reserve-img">
-	<a href="">이미지 넣을거임</a>
-</div>
-
-
 <table class="contentTable">
+	<tr>
+		<td>
+			<h1>문의글</h1>
+		<td>
+	</tr>
 	<form action="${ctx}/boardUpdate.do" method="post">
 		<input type="hidden" id="writer" name="writer" value="${writer}">
 		<input type="hidden" id="subject" name="subject" value="${subject}">
@@ -37,7 +36,7 @@
 			</c:if>
 			<td colspan="2">
 				<form>
-					<button onclick="history.back()">뒤로가기</button>
+					<button type="button" onclick="history.back()">뒤로가기</button>
 				</form>
 			</td>
 		</tr>

@@ -3,10 +3,6 @@
 
 <%@ include file="/WEB-INF/parts/header.jsp"%>
 
-<div class="reserve-img">
-	<a href="">이미지 넣을거임</a>
-</div>
-
 <div class="customerCenterContainer">
 	<div class="centerHeader">
 		<h1>자주 묻는 질문</h1>

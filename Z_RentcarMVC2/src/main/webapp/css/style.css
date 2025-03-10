@@ -1,19 +1,163 @@
 @charset "UTF-8";
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Noto+Sans+KR:wght@100..900&display=swap');
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
-.swiper {
-	width: 100%;
-	height: 500px;
-	margin-bottom: 20px;
-}
-.swiper-slide img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+/* 공통 스타일 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Noto Sans KR', 'Montserrat', sans-serif;
+    background-color: #f8f8f8;
+}
 
-#topButton {
+a {
+    text-decoration: none;
+    color: black;
+}
+
+button, input[type='button'] {
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+input, textarea, select {
+    outline: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
+}
+/* 공통 스타일 */
+
+/* rentcarMain.do */
+div.mainScreen {
+    padding: 0 200px;
+}
+
+div.swiper-slide {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+div.swiper-slide img {
+    width: auto; 
+    max-width: 100%; 
+    max-height: 500px; 
+    object-fit: contain;
+}
+/* rentcarMain.do */
+
+/* header 공통 스타일 */
+header {
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 200px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+section.rentcar-logo {
+    flex: 1;
+    height: 100%;
+}
+
+section.rentcar-logo a {
+    overflow: hidden;
+    height: 100%;
+}
+
+section.rentcar-logo a img {
+    height: 100%;
+}
+
+section.rentcar-header {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+section.user-header {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-header a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    margin-left: 40px;
+}
+
+.open-modal-btn {
+    font-size: 1.1em;
+    font-weight: bold;
+    background: none;
+    cursor: pointer;
+}
+/* header 공통 스타일 */
+
+/* footer 공통 스타일 */
+footer {
+    background-color: #f8f8f8;
+    padding: 10px 200px;
+    margin-top: 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.infoSection p {
+    font-size: 0.75em;
+    color: #555;
+    margin: 3px 0;
+}
+
+.callSection h3, .appSection h3 {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.footer-phone {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: red;
+}
+
+.app-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.app-icons a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+#topBtn {
     position: fixed;
     bottom: 40px;
     right: 40px;
@@ -21,14 +165,791 @@
     height: 50px;
     border: none;
     border-radius: 50%;
-    background-color: #333;
-    color: #fff;
+    background-color: black;
+    color: white;
     cursor: pointer;
-    opacity: 0.7;
     font-size: 14px;
     z-index: 1000;
 }
 
-#topButton:hover {
+#topBtn:hover {
     background-color: #555;
 }
+/* footer 공통 스타일 */
+
+/* userLogin 모달 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+/* userLogin 모달 */
+
+/* 공통 table, input */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.btn-submit, .btn-cancel {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+}
+
+.btn-submit {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-submit:hover {
+    background-color: #333;
+}
+
+.btn-cancel {
+    background-color: #ddd;
+    color: black;
+    font-weight: bold;
+}
+
+.btn-cancel:hover {
+    background-color: #bbb;
+}
+
+#checkId {
+    margin-left: 10px;
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+#checkId:hover {
+    background-color: #444;
+}
+/* 공통 table, input */
+
+/* userInsert */
+section.insert {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    margin: auto;
+}
+
+button.btn-submit {
+    margin-top: 10px;
+}
+/* userInsert */
+
+/* userInfo.do / user-delete */
+section.userInfo,
+section.user-delete {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    margin: auto;
+}
+
+button.btn-delete {
+    color: gray;
+}
+/* userInfo / user-delete */
+
+
+/* rentcarCustomerCenter */
+.customerCenterContainer {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.centerHeader {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.centerHeader h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+
+.centerHeader p {
+    font-size: 14px;
+    color: gray;
+}
+
+.centerSearch {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.centerSearch input {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.centerSearch button {
+    padding: 10px 15px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.centerSearch button:hover {
+    background-color: #333;
+}
+
+.board table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.board th, .board td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.board td i {
+    color: black;
+    font-size: 16px;
+}
+
+.board td a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.board td a:hover {
+    text-decoration: underline;
+}
+
+.pageingBtn {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.pageingBtn a {
+    padding: 4px 7px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.pageingBtn a:hover {
+    background-color: #333;
+}
+
+.inquireBtn {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.inquireBtn a {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.inquireBtn a:hover {
+    background-color: #333;
+}
+
+.btn-del {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.btn-del:hover {
+    background-color: darkred;
+}
+/* rentcarCustomerCenter */
+
+/* boardInsert, boardUpdate */
+.contentTable, .updateTable {
+    width: 100%;
+    max-width: 700px;
+    margin: 40px auto;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.contentTable td, .updateTable td {
+    padding: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    color: black;
+}
+
+.contentTable input, .contentTable textarea, .updateTable input,
+    .updateTable textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background: #f8f8f8;
+}
+
+.contentTable textarea, .updateTable textarea {
+    resize: none;
+    height: 150px;
+}
+
+.contentTable button, .updateTable button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.contentTable button[type="submit"], .updateTable button[type="submit"] {
+    background-color: black;
+    color: white;
+}
+
+.contentTable button[type="submit"]:hover, .updateTable button[type="submit"]:hover {
+    background-color: #333;
+}
+
+.contentTable button[onclick="history.back()"], .updateTable button[onclick="history.back()"] {
+    background-color: #ddd;
+    color: black;
+}
+
+.contentTable button[onclick="history.back()"]:hover, .updateTable button[onclick="history.back()"]:hover {
+    background-color: #bbb;
+}
+/* boardInsert, boardUpdate */
+
+/* rentcarReservationList */
+.ReservationList-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.ReservationList-container h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.reserveList {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 14px;
+}
+
+.reserveList tr.listInfo {
+    background-color: black;
+    font-weight: bold;
+}
+
+.reserveList tr.listInfo td {
+    color: white;
+    font-size: 0.8em;
+}
+
+.reserveList tr:first-child td {
+    padding: 12px;
+    border-bottom: 2px solid white;
+}
+
+.reserveList td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.reserveList tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.reserveList td {
+    color: black;
+    font-weight: bold;
+}
+
+.reserveList td i {
+    font-size: 16px;
+    color: black;
+}
+
+.ReservationList-container {
+    overflow-x: auto;
+}
+/* rentcarReservationList */
+
+/* rentcarReservation */
+.reserve-main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.reserve-img {
+    margin-bottom: 20px;
+}
+
+.reserve-img a {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    background-color: #f0f0f0;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.calTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.calendar {
+    width: 100%;
+    max-width: 500px;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 14px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.week {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+.day {
+    padding: 12px;
+    border: 1px solid #ddd;
+    font-weight: bold;
+}
+
+.calendar-days {
+    padding: 12px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.calendar-days:hover {
+    background-color: #f8f8f8;
+}
+
+.calendar-days.selected {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.left-btn, .right-btn {
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    margin-top: 10px;
+    transition: background 0.2s ease-in-out;
+}
+
+.left-btn:hover, .right-btn:hover {
+    background-color: #333;
+}
+
+.btn {
+    margin-top: 20px;
+}
+
+.btn button {
+    width: 100%;
+    max-width: 300px;
+    background-color: black;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s ease-in-out;
+}
+
+.calendarHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 10px;
+}
+
+.calendarHeader .left-btn, .calendarHeader .right-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+.calendarHeader .left-btn:hover, .calendarHeader .right-btn:hover {
+    background-color: #333;
+}
+
+.calendarHeader .calTitle {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.reserve-main h2 {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.reserve-main hr {
+    margin-bottom: 20px;
+    border: none;
+    border-top: 2px solid #ddd;
+}
+/* rentcarReservation */
+
+/* boardInsert */
+.inquiry-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.inquiry-container h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.inserTable {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.inserTable td {
+    padding: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.inserTable input, .inserTable textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background: #f8f8f8;
+}
+
+.inserTable textarea {
+    resize: none;
+    height: 150px;
+}
+
+.btn-submit, .btn-cancel {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-submit {
+    background-color: black;
+    color: white;
+}
+
+.btn-submit:hover {
+    background-color: #333;
+}
+
+.btn-cancel {
+    background-color: #ddd;
+    color: black;
+}
+
+.btn-cancel:hover {
+    background-color: #bbb;
+}
+/* boardInsert */
+
+/* rentcarChoice.do */
+.reserve-choice {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.reserve-date {
+    display: flex;
+    justify-content: space-around;
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.filterContainer {
+    margin-top: 15px;
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.filterContainer table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.filterContainer td {
+    padding: 8px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.filterContainer label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.carList {
+    margin-top: 20px;
+}
+
+.carTable {
+    border-top: 2px solid #ddd;
+    padding: 15px;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.resultOptionRow {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.resultOptionRow input[type="checkbox"] {
+    margin-left: 5px;
+}
+
+.btn {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background: #000000;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn button:hover {
+    background-color: #333;
+}
+
+.carTable {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.carRow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    padding: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.carRow:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.carRow img {
+    width: 150px;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.carRow span {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#company_whole,
+#category_whole,
+#usepeople_whole {
+    display: none;
+}
+/* rentcarChoice.do */
+
+

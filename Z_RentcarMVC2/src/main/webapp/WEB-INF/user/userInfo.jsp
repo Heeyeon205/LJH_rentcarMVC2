@@ -3,10 +3,11 @@
 
 <%@ include file="/WEB-INF/parts/header.jsp"%>
 
-<section class="login">
+<section class="userInfo">
 	<form action="${ctx}/userUpdate.do" method="post">
 		<table>
 				<input type="hidden" id="num" name="num" value="${vo.num}" class="num-info">
+				<h1>내 정보</h1>
 			<tr>
 				<td>Name</td>
 				<td><input type="text" id="name" name="name" value="${vo.name}"
@@ -42,7 +43,7 @@
 					<button type="submit" class="btn-submit">수정</button>
 				</td>
 				<td>
-					<button class="btn-cancel"
+					<button type="button" class="btn-cancel"
 						onclick="window.location.href='${ctx}/rentcarMain.jsp'">취소</button>
 				</td>
 			</tr>

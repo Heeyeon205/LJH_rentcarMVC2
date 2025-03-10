@@ -59,11 +59,13 @@ class Calendar {
 					if (currentDate.getTime() === this.selectedDays[0]?.getTime() ||
 						currentDate.getTime() === this.selectedDays[1]?.getTime()) {
 						btn.classList.add("selected");
-						btn.style.backgroundColor = "green";
+						btn.style.backgroundColor = '#808080';
+						btn.style.color = 'white';
 					} else if (this.selectedDays.length === 2 &&
 						currentDate > this.selectedDays[0] &&
 						currentDate < this.selectedDays[1]) {
-						btn.style.backgroundColor = "lightgreen";
+						btn.classList.add("range");
+						btn.style.backgroundColor = '#C0C0C0';
 					}
 				}
 				day++;
@@ -109,7 +111,6 @@ class Calendar {
 			this.selectedDays = [];
 			this.fillCalendar();
 		}
-
 		if (this.selectedDays.length === 1 && this.selectedDays[0].getTime() === selectedDate.getTime()) {
 			alert("최소 2일 이상 선택해야 합니다.");
 			return;
@@ -117,12 +118,12 @@ class Calendar {
 
 		this.selectedDays.push(selectedDate);
 		selectDay.classList.add('selected');
-		selectDay.style.backgroundColor = 'green';
+		selectDay.style.backgroundColor = '#808080';
+		selectDay.style.color = 'white';
 
 		if (this.selectedDays.length === 1) {
 			this.disablePreviousDates(selectedDate);
 		}
-
 		if (this.selectedDays.length === 2) {
 			this.fillCalendar();
 			this.updateReserve();
@@ -135,7 +136,7 @@ class Calendar {
 			if (btnDate < firstSelectedDate) {
 				btn.classList.add("disabled");
 				btn.disabled = true;
-				btn.style.backgroundColor = "#e0e0e0";
+				btn.style.backgroundColor = "#E0E0E0"; 
 				btn.style.color = "#999";
 				btn.style.cursor = "not-allowed";
 			}
@@ -163,6 +164,6 @@ class Calendar {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const today = new Date();
-    const cal = new Calendar(today.getFullYear(), today.getMonth());
+	const today = new Date();
+	const cal = new Calendar(today.getFullYear(), today.getMonth());
 });

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <footer>
-
+<hr>
+<br>
 	<div class="footer-container">
 		<div class="infoSection">
 			<img src="${ctx}/image/rent_logo.jpg" alt="로고"
@@ -35,7 +35,7 @@
 
 			</div>
 		</div>
-		<button class="topBtn" id="topBtn">▲ TOP</button>
+		<button class="topBtn" id="topBtn">TOP</button>
 	</div>
 <script src="${ctx}/script/footer.js"></script>
 </footer>

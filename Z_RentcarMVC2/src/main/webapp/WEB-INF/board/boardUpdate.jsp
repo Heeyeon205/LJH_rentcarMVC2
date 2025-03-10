@@ -3,13 +3,12 @@
 
 <%@ include file="/WEB-INF/parts/header.jsp"%>
 
-
-<div class="reserve-img">
-	<a href="">이미지 넣을거임</a>
-</div>
-
-
-<table class="inserTable">
+<table class="updateTable">
+	<tr>
+		<td>
+			<h1>문의글 수정하기</h1>
+		<td>
+	</tr>
 	<form action="${ctx}/boardUpdate.do" method="post">
 	<tr>
 		<td>작성자</td>
@@ -35,7 +34,7 @@
 
 		<td colspan="2">
 			<form>
-				<button onclick="history.back()">뒤로가기</button>
+				<button type="button" onclick="history.back()">뒤로가기</button>
 			</form>
 		</td>
 	</tr>

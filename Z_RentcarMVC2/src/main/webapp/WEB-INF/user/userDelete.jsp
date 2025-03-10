@@ -6,6 +6,7 @@
 <section class="user-delete">
 	<form action="${ctx}/userDelete.do" method="post">
 		<table>
+			<h1>회원 탈퇴</h1>
 			<tr>
 				<td>ID</td>
 				<td><input type="text" id="userid" name="userid" value="${vo.userid}"

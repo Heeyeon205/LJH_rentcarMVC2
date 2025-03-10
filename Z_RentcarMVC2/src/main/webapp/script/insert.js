@@ -78,7 +78,7 @@ function validateField(input) {
         isValid = false;
     } else {
         if (input.name === 'phone') {
-            const phonePattern = /^01[016789]-?\d{3,4}-?\d{4}$/;
+            const phonePattern = /^010-?\d{3,4}-?\d{4}$/;
             if (!phonePattern.test(value)) {
                 message = '유효한 휴대폰 번호를 입력해주세요 (예: 010-1234-5678)';
                 isValid = false;
@@ -90,7 +90,6 @@ function validateField(input) {
     showError(input, message);
     return isValid;
 }
-
 
 function showError(input, message) {
     let errorElement = input.nextElementSibling;

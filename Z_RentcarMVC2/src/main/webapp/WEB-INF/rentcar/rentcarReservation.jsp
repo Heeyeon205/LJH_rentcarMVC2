@@ -4,14 +4,13 @@
 <%@ include file="/WEB-INF/parts/header.jsp"%>
 
 <div class="reserve-main">
-
-	<div class="reserve-img">
-		<a href="">이미지 넣을거임</a>
-	</div>
-
+	<h2>대여 날짜를 선택해주세요</h1><hr>
 	<div class="calendar-container">
-		<button class="left-btn"><</button>
-		<p class="calTitle">달력 불러오는 중</p>
+		<div class="calendarHeader">
+			<button class="left-btn"><</button>
+			<p class="calTitle">달력 불러오는 중</p>
+			<button class="right-btn">></button>
+		</div>
 		<table class="calendar" border="1">
 			<tbody>
 				<tr class="week">
@@ -80,7 +79,6 @@
 				</tr>
 			</tbody>
 		</table>
-		<button class="right-btn">></button>
 	</div>
 
 	<div class="btn">
