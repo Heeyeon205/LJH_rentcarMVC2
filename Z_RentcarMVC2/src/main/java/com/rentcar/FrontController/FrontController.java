@@ -23,15 +23,10 @@ public class FrontController extends HttpServlet {
 		String ctx = request.getContextPath();
 		String command = url.substring(ctx.length());
 		
-		 System.out.println("호출 URI: " + url);
-		    System.out.println("contextPath: " + ctx);
-		    System.out.println("command: " + command);
-
 		HandlerMapping mapping = new HandlerMapping();
 		Controller controller = mapping.getController(command);
 
 		String nextPage = controller.requestHandler(request, response);
-		System.out.println("nextPage : " + nextPage);
 
 		if (nextPage != null) {
 			if (nextPage.indexOf("redirect:") != -1) {

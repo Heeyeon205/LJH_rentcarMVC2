@@ -50,15 +50,12 @@ public class RentcarDAO {
 	    }
 
 	public ArrayList<Rentcar> getFilterCar(HashMap<String, Object> filterMap) {
-		System.out.println("필터 쿼리로 들어옴");
 		ArrayList<Rentcar> list = null;
 		try (SqlSession session = sqlSessionFactory.openSession()) {
             list = (ArrayList) session.selectList(nameSpace + "getFilterCar", filterMap);
         } catch (Exception e) {
             e.printStackTrace();
         }
-		System.out.println("리스트: " + list);
-		System.out.println("필터 쿼리 나감");
         return list;
 	}
 	

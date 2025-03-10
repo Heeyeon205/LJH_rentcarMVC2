@@ -25,8 +25,8 @@ public class UserLoginController implements Controller{
 		String id = request.getParameter("id");
 		if(id == null) {
 			return "userLogin";
-//			return "redirect:" + ctx + "/WEB-INF/user/userLogin.jsp";
 		}
+		
 		String pw = request.getParameter("pw");
 		
 		String name = UserDAO.getInstance().checkUser(id, pw);
@@ -35,7 +35,6 @@ public class UserLoginController implements Controller{
 			session.setAttribute("log", name);
 			String url = ctx + "/rentcarMain.do";
 			ScriptFunction.alertLocation(name + "님 환영합니다.", url, out, response);
-//			return "rentcarMain";
 			return null;
 		}
 		ScriptFunction.alertBack("ID 혹은 PW를 확인해주세요", out, response);
