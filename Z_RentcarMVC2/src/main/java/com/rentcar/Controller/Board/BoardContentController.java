@@ -29,20 +29,15 @@ public class BoardContentController implements Controller {
 		HttpSession session = request.getSession();
 		String logName = (String) session.getAttribute("log");
 		
-		// 해당 게시글 정보
 		int boardNo = Integer.parseInt(request.getParameter("no"));
 		Board board = BoardDAO.getInstance().getBoardInfoByNo(boardNo);
 		String writer = board.getWriter();
 		String subject = board.getSubject();
 		String contents = board.getContents();
-		System.out.println(writer);
-		System.out.println(subject);
-		System.out.println(contents);
 		request.setAttribute("writer", writer);
 		request.setAttribute("subject", subject);
 		request.setAttribute("contents", contents);
 		
-		// 로그인 유저 정보
 		String userid = UserDAO.getInstance().getUserId(logName);
 		request.setAttribute("userid", userid);
 		
